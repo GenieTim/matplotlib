@@ -1099,15 +1099,21 @@ class Axis(martist.Artist):
             'length': 'size',
             'direction': 'tickdir',
             'rotation': 'labelrotation',
-            'left': 'tick1On',
-            'bottom': 'tick1On',
-            'right': 'tick2On',
-            'top': 'tick2On',
-            'labelleft': 'label1On',
-            'labelbottom': 'label1On',
-            'labelright': 'label2On',
-            'labeltop': 'label2On',
         }
+        if self.axis_name == "x":
+            keymap.update({
+              'top': 'tick2On',
+              'bottom': 'tick1On',
+              'labelbottom': 'label1On',
+              'labeltop': 'label2On',
+            })
+        elif self.axis_name == "y":
+            keymap.update({
+              'left': 'tick1On',
+              'right': 'tick2On',
+              'labelleft': 'label1On',
+              'labelright': 'label2On',
+            })
         if reverse:
             kwtrans = {
                 oldkey: kw_.pop(newkey)
